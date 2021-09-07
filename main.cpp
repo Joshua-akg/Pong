@@ -1,4 +1,7 @@
 #include <iostream>
+#include <time.h>
+#include <conio.h>
+
 using namespace std;
 
 enum dir {STOP = 0, 
@@ -129,20 +132,76 @@ public:
 
 };
 
+class gameEngine {
+private:
+    int height, width;
+    int score1, score2;
+    char up1, up2, down1, down2;
+    bool gameOver;
+    ball *ball;
+    paddle *p1;
+    paddle *p2;
+
+public:
+    gameEngine(int h, int w) {
+        srand(time(NULL));      //set the seed for the randomiser
+        gameOver = false;
+
+        //Set the key bindings for the controls
+        up1 = 'w'; down1 = 's';
+        up2 = 'i'; down2 = 'k';
+
+        //set the initial scores
+        score1 = score2 = 0;
+        
+        
+        height = h;
+        width = w;
+
+        ball = new ball(w/2, h/2);
+
+        //Create player objects with positions
+        p1 = new paddle(1, (h/2) -3);
+        p2 = new paddle(w - 2, (h/2) -3);
+    }
+
+    ~gameEngine() {
+        delete ball, p1, p2;
+    }
+
+    void increaseScore(paddle *player) {
+        if (player == p1) {
+            score1++;
+        } else if (player == p2) {
+            score2++;
+        }
+
+        ball -> reset();
+        p1 -> reset();
+        p2 -> reset();
+
+    }
+
+    
+}
+
 int main() {
     // test behaviour
 
-    paddle p1(0,0);
-    paddle p2(10,0);
 
-    cout << p1 << endl;
-    cout << p2 << endl;
 
-    p1.moveUp();
-    p2.moveDown();
+    // paddle p1(0,0);
+    // paddle p2(10,0);
 
-    cout << p1 << endl;
-    cout << p2 << endl;
+    // cout << p1 << endl;
+    // cout << p2 << endl;
+
+    // p1.moveUp();
+    // p2.moveDown();
+
+    // cout << p1 << endl;
+    // cout << p2 << endl;
+
     // ball b(0, 0);
     // cout << b << endl;
     // b.changeRandomDir();
