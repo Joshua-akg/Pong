@@ -106,7 +106,23 @@ public:
         y = originalY;
     }
 
-    
+    inline int getX() {
+        return x;
+    }
+
+    inline int getY() {
+        return y;
+    }
+
+    void moveUp() {
+        y--;
+    }
+
+    void moveDown() {
+        y++;
+    }
+
+
 
 }
 
