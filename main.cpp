@@ -122,22 +122,37 @@ public:
         y++;
     }
 
+    friend ostream & operator<<(ostream & o, paddle p) {
+        o << "Paddle [" << p.x << "," << p.y << "]";
+        return o;
+    }
 
-
-}
+};
 
 int main() {
     // test behaviour
-    ball b(0, 0);
-    cout << b << endl;
-    b.changeRandomDir();
-    cout << b << endl;
-    b.move();
-    cout << b << endl;
 
-    b.changeRandomDir();
-    b.move();
-    cout << b << endl;
+    paddle p1(0,0);
+    paddle p2(10,0);
+
+    cout << p1 << endl;
+    cout << p2 << endl;
+
+    p1.moveUp();
+    p2.moveDown();
+
+    cout << p1 << endl;
+    cout << p2 << endl;
+    // ball b(0, 0);
+    // cout << b << endl;
+    // b.changeRandomDir();
+    // cout << b << endl;
+    // b.move();
+    // cout << b << endl;
+
+    // b.changeRandomDir();
+    // b.move();
+    // cout << b << endl;
 
     return 0;
 }
