@@ -184,7 +184,7 @@ public:
         system("clear");  // or "clear"
         
         for (int i = 0; i < width+2; i++) {
-            cout << "▓"; //Hexadecimal character to represent the wall
+            cout << "▓"; //character to represent the wall
         }
         cout << endl;
 
@@ -212,7 +212,30 @@ public:
                     cout << "█";    //player 1
                 } else if (plyr2x == j && plyr2y == i) {
                     cout << "█";    //player 2
-                } else 
+                }
+
+                //blocks to make up the paddles
+                else if (plyr1x == j && plyr1y + 1 == i) {
+                    cout << "█";    
+                }
+                else if (plyr1x == j && plyr1y + 2 == i) {
+                    cout << "█";    
+                }
+                else if (plyr1x == j && plyr1y + 3 == i) {
+                    cout << "█";    
+                }
+
+                else if (plyr2x == j && plyr2y + 1 == i) {
+                    cout << "█";    
+                }
+                else if (plyr2x == j && plyr2y + 2 == i) {
+                    cout << "█";    
+                }
+                else if (plyr2x == j && plyr2y + 3 == i) {
+                    cout << "█";    
+                }
+
+                else 
                     cout << " ";
 
                 if (j == width - 1) {
@@ -234,8 +257,6 @@ int main() {
 
     g.draw();
     // test behaviour
-
-
 
     // paddle p1(0,0);
     // paddle p2(10,0);
