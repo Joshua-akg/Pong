@@ -3,7 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "C:\\Users\\gbeng\\AppData\\Local\\Programs\\stack\\x86_64-windows\\ghc-8.8.4\\mingw\\x86_64-w64-mingw32\\include"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <time.h>
-#include <conio.h>
 
 using namespace std;
 
@@ -138,7 +137,7 @@ private:
     int score1, score2;
     char up1, up2, down1, down2;
     bool gameOver;
-    ball *ball;
+    ball *pball;
     paddle *p1;
     paddle *p2;
 
@@ -158,7 +157,7 @@ public:
         height = h;
         width = w;
 
-        ball = new ball(w/2, h/2);
+        pball = new ball(w / 2, h / 2);
 
         //Create player objects with positions
         p1 = new paddle(1, (h/2) -3);
@@ -166,7 +165,7 @@ public:
     }
 
     ~gameEngine() {
-        delete ball, p1, p2;
+        delete pball, p1, p2;
     }
 
     void increaseScore(paddle *player) {
@@ -176,16 +175,69 @@ public:
             score2++;
         }
 
-        ball -> reset();
+        pball -> reset();
         p1 -> reset();
         p2 -> reset();
+    }
+
+    void draw() {
+        system("cls");  // or "clear"
+        
+        for (int i = 0; i < width+2; i++) {
+            cout << "\xB2"; //Hexadecimal character to represent the wall
+        }
+        cout << endl;
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                //get ball co-ords
+                int ballX = pball -> getX();
+                int ballY = pball -> getY();
+
+                //get player co-ords
+                int plyr1x = p1 -> getX();
+                int plyr1y = p1 -> getY();
+
+                int plyr2x = p2 -> getX();
+                int plyr2y = p2 -> getY();
+
+                if (j == 0) {
+                    cout << "\xB2";
+                }
+
+
+                //Draw at the co-ordinates
+                if (ballX == j && ballY == i) {
+                    cout << "O";    //ball
+                } else if (plyr1x == j && plyr1y == i) {
+                    cout << "\xDB";    //player 1
+                } else if (plyr2x == j && plyr2y == i) {
+                    cout << "\xDB";    //player 2
+                } else 
+                    cout << " ";
+
+                if (j == width - 1) {
+                    cout << "\xB2";
+                }
+            }
+            cout << endl;
+        }
+        
+        
+        for (int i = 0; i < width+2; i++) {
+            cout << "\xB2";
+        }
+        cout << endl;
 
     }
 
     
-}
+};
 
 int main() {
+    gameEngine g(40, 20);
+
+    g.draw();
     // test behaviour
 
 
