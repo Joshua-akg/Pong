@@ -306,6 +306,58 @@ public:
             }
         }
     }
+
+    void logic() {
+        int ballX = pball -> getX();
+        int ballY = pball -> getY();
+
+        //get player co-ords
+        int plyr1x = p1 -> getX();
+        int plyr1y = p1 -> getY();
+
+        int plyr2x = p2 -> getX();
+        int plyr2y = p2 -> getY();
+
+        //Left paddle logic
+        for (int i = 0; i < 4; i++) {
+            if (ballX == plyr1x + 1) {
+                if (ballY == plyr1y + i) {  //if left paddle is hit
+                //ball either goes right, upright or downright
+                    pball -> changeDir((dir)((rand() % 3)+4)); 
+                }
+            }
+        }
+
+        //Right paddle logic
+        for (int i = 0; i < 4; i++) {
+            if (ballX == plyr2x - 1) {
+                if (ballY == plyr2y + i) {  //if left paddle is hit
+                //ball either goes right, upright or downright
+                    pball -> changeDir((dir)((rand() % 3)+1)); 
+                }
+            }
+        }
+
+        //Bottom wall logic
+        if (ballY == height - 1) {
+            pball -> changeDir(pball -> getDirection() == DOWNRIGHT ? UPRIGHT : UPLEFT);
+        }
+
+        //top wall logic
+        if (ballY == 0) {
+            pball -> changeDir(pball -> getDirection() == UPRIGHT ? DOWNRIGHT : DOWNLEFT);
+        }
+
+        //right wall logic
+        if (ballX == width-1) {
+            increaseScore(p1);
+        }
+
+        //Left wall logic
+        if (ballX == 0) {
+            increaseScore(p2);
+        }
+    }
 };
 
 int main() {
