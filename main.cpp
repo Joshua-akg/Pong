@@ -1,5 +1,7 @@
 #include <iostream>
+#include <conio.h>
 #include <time.h>
+
 
 using namespace std;
 
@@ -181,7 +183,7 @@ public:
     }
 
     void draw() {
-        system("clear");  // or "clear"
+        system("cls");  // or "clear"
         
         for (int i = 0; i < width+2; i++) {
             cout << "▓"; //character to represent the wall
@@ -206,6 +208,7 @@ public:
                 }
 
                 //Draw at the corresponding co-ordinates
+                //Rearrange else ifs later
                 if (ballX == j && ballY == i) {
                     cout << "O";    //ball
                 } else if (plyr1x == j && plyr1y == i) {
@@ -250,6 +253,59 @@ public:
         }
         cout << endl;
     }    
+
+    void input() {
+        pball -> move();
+
+        int ballX = pball -> getX();
+        int ballY = pball -> getY();
+
+        //get player co-ords
+        int plyr1x = p1 -> getX();
+        int plyr1y = p1 -> getY();
+
+        int plyr2x = p2 -> getX();
+        int plyr2y = p2 -> getY();
+
+        if (_kbhit()) {     //If keyboard is hit
+            char current = _getch();
+
+            //if available,move paddles according to input
+            if (current == up1) {
+                if (plyr1y > 0) {
+                    p1 -> moveUp();
+                }
+            }
+
+            if (current == up2) {
+                if (plyr2y > 0) {
+                    p2 -> moveUp();
+                }
+            }
+
+            if (current == down1) {
+                if (plyr1y + 4 < height) {
+                    p1 -> moveDown();
+                }
+            }
+
+            if (current == down2) {
+                if (plyr2y + 4 < height) {
+                    p2 -> moveDown();
+                }
+            }
+
+            //If the ball is stopped when pressed, set a random direction
+            if (pball -> getDirection() == STOP) {
+                pball -> changeRandomDir();
+            }
+
+            //if the key pressed is q, game is over
+            if (current == 'q') {
+                gameOver = true;
+            }
+        }
+    }
 };
 
 int main() {
