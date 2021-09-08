@@ -181,10 +181,10 @@ public:
     }
 
     void draw() {
-        system("cls");  // or "clear"
+        system("clear");  // or "clear"
         
         for (int i = 0; i < width+2; i++) {
-            cout << "\xB2"; //Hexadecimal character to represent the wall
+            cout << "▓"; //Hexadecimal character to represent the wall
         }
         cout << endl;
 
@@ -202,40 +202,35 @@ public:
                 int plyr2y = p2 -> getY();
 
                 if (j == 0) {
-                    cout << "\xB2";
+                    cout << "▓";
                 }
 
-
-                //Draw at the co-ordinates
+                //Draw at the corresponding co-ordinates
                 if (ballX == j && ballY == i) {
                     cout << "O";    //ball
                 } else if (plyr1x == j && plyr1y == i) {
-                    cout << "\xDB";    //player 1
+                    cout << "█";    //player 1
                 } else if (plyr2x == j && plyr2y == i) {
-                    cout << "\xDB";    //player 2
+                    cout << "█";    //player 2
                 } else 
                     cout << " ";
 
                 if (j == width - 1) {
-                    cout << "\xB2";
+                    cout << "▓";
                 }
             }
             cout << endl;
-        }
-        
+        }        
         
         for (int i = 0; i < width+2; i++) {
-            cout << "\xB2";
+            cout << "▓";
         }
         cout << endl;
-
-    }
-
-    
+    }    
 };
 
 int main() {
-    gameEngine g(40, 20);
+    gameEngine g(20, 40);
 
     g.draw();
     // test behaviour
