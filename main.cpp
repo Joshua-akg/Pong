@@ -252,6 +252,8 @@ public:
             cout << "▓";
         }
         cout << endl;
+
+        cout << "Player 1: " << score1 << endl << "Player 2: " << score2 << endl;
     }    
 
     void input() {
@@ -358,12 +360,21 @@ public:
             increaseScore(p2);
         }
     }
+
+    void run() {
+        while (!gameOver) {
+            draw();
+            input();
+            logic();
+
+        }        
+    }
 };
 
 int main() {
     gameEngine g(20, 40);
-
-    g.draw();
+    g.run();
+    // g.draw();
     // test behaviour
 
     // paddle p1(0,0);
