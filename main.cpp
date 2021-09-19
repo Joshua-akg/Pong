@@ -2,7 +2,6 @@
 #include <conio.h>
 #include <time.h>
 
-
 using namespace std;
 
 enum dir {STOP = 0, 
