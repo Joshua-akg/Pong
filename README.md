@@ -8,4 +8,6 @@ A game of Pong built from undertkaing C++ tutorials during the research of vario
 - s -> Down 
 
 ### Player 2
+- i -> Up 
+- k -> Down 
 
