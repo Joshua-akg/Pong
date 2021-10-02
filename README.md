@@ -4,8 +4,8 @@ A game of Pong built from undertkaing C++ tutorials during the research of vario
 ## Controls
 
 ### Player 1
-w - 
-s - 
+- w -> Up 
+- s -> Down 
 
 ### Player 2
 
